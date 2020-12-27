@@ -1,3 +1,4 @@
+
 function* idMaker() {
   let index = 0;
   while (true)
@@ -9,19 +10,19 @@ let gen = idMaker();
 console.log(gen.next().value);
 console.log(gen.next().value);
 console.log(gen.next().value);
-function* fontGenerator(n = 14) {
+function* fontGenerator(n = 10) {
   let fontSize = n;
   while (true) {
-    let value = yield fontSize;
+    const c = yield fontSize;
 
-    if (value === '+') {
-      yield (fontSize += 2);
+    if (c === '+') {
+      fontSize = fontSize + 2;
     } else {
-      yield (fontSize -= 2);
+      fontSize = fontSize - 2;
     }
   }
 }
-let fonts = fontGenerator();
+let fonts = fontGenerator(14);
 console.log(fonts.next('+').value);
 console.log(fonts.next('+').value);
 console.log(fonts.next('+').value);
